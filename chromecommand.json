@@ -1,0 +1,23 @@
+{
+    "name": "Privacy Mirror",
+    "version": "1.0",
+    "description": "A Chrome extension that helps users understand and manage their online privacy",
+
+"permissions": [
+    "scripting",
+    "tabs"
+  ],
+
+  "action": {
+    "default_title": "Privacy Mirror",
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
