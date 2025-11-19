@@ -1,6 +1,5 @@
 {
     "name": "Privacy Mirror",
-    "version": "1.0",
     "description": "A Chrome extension that helps users understand and manage their online privacy",
 
 "permissions": [
