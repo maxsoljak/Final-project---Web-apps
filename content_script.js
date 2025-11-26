@@ -55,8 +55,8 @@ function getFingerprintData() { // Function to collect fingerprinting data from 
 
     return data;
 }
-
-chrome.runtime.onMessage.addListener((msg, sender, respond) => {
+// Listen for messages from popup.jsad
+chrome.runtime.onMessage.addListener((msg, sender, respond) => { 
     if (msg.command === "getFingerprint") {
         const fingerprintData = getFingerprintData();
         respond(fingerprintData);
