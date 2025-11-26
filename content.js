@@ -52,7 +52,8 @@ function getFingerprintData() { // Function to collect fingerprinting data from 
     return data;
 }
 
-chrome.runtime.onMessage.addListener((msg, sender, respond) => {
+chrome.runtime.onMessage.addListener((msg, sender, respond) => { // Listen for messages from the extension
+    const fingerprintData = getFingerprintData(); // Collect fingerprinting data
     if (msg.command === "getFingerprint") {
         respond(fingerprintData);
     }
