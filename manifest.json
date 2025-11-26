@@ -1,6 +1,8 @@
 {
-    "name": "Privacy Mirror",
-    "description": "A Chrome extension that helps users understand and manage their online privacy",
+  "manifest_version": 3, 
+  "name": "Privacy Mirror",
+  "version": "1.0",
+  "description": "A Chrome extension that helps users understand and manage their online privacy",
 
 "permissions": [
     "scripting",
@@ -15,8 +17,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content_script.js"],
-      "run_at": "document_end"
+      "js": ["content_script.js"]
     }
   ]
 }

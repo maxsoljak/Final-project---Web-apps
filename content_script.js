@@ -17,7 +17,7 @@ function getFingerprintData() { // Function to collect fingerprinting data from 
     data.pixelDepth = screen.pixelDepth;
 
     // Timezone
-    data.timezoneOffset = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    data.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     data.timeZoneOffset = new Date().getTimezoneOffset();
 
     // Browser features
@@ -25,7 +25,11 @@ function getFingerprintData() { // Function to collect fingerprinting data from 
     data.doNotTrack = navigator.doNotTrack;
 
     // Plugins
-    data.plugins = Array.from(navigator.plugins || []).map(p => p.name);
+    let pluginList = [];
+    for (let i = 0; i < navigator.plugins.length; i++) {
+        pluginList.push(navigator.plugins[i].name);
+    }
+    data.plugins = pluginList;
 
     try {
         // Canvas fingerprinting: 
