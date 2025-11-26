@@ -32,7 +32,7 @@ function getFingerprintData() { // Function to collect fingerprinting data from 
     data.plugins = pluginList;
 
     try {
-        // Canvas fingerprinting: 
+
         // Websites use this trick because the GPU reveals very important details like:  GPU model, graphics drivers, OS rendering etc.
         
         const canvas = document.createElement("canvas"); // create a canvas element
