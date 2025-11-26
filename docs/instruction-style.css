@@ -17,7 +17,7 @@ h2 {
     padding-bottom: 5px;
 }
 
-.step { /* use class, not id */
+.step { 
     background: #fff;
     border-radius: 10px;
     padding: 20px;
