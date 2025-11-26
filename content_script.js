@@ -24,7 +24,7 @@ function getFingerprintData() { // Function to collect fingerprinting data from 
     data.cookiesEnabled = navigator.cookieEnabled;
     data.doNotTrack = navigator.doNotTrack;
 
-    // Plugins
+    // 
     let pluginList = [];
     for (let i = 0; i < navigator.plugins.length; i++) {
         pluginList.push(navigator.plugins[i].name);
@@ -56,10 +56,9 @@ function getFingerprintData() { // Function to collect fingerprinting data from 
     return data;
 }
 
-chrome.runtime.onMessage.addListener((msg, sender, respond) => { // Listen for messages from the extension
-    const fingerprintData = getFingerprintData(); // Collect fingerprinting data
+chrome.runtime.onMessage.addListener((msg, sender, respond) => {
     if (msg.command === "getFingerprint") {
+        const fingerprintData = getFingerprintData();
         respond(fingerprintData);
     }
-
 });

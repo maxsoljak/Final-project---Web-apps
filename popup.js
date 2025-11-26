@@ -1,22 +1,28 @@
 // Ask content script for fingerprint data
-chrome.tabs.sendMessage(tabs[0].id, { command: "getFingerprint" }, (info) => {
+chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (!tabs || tabs.length === 0) {
+        document.getElementById("results").innerText = "No active tab found.";
+        document.getElementById("score").innerText = "N/A";
+        return;
+    }
 
-        
-        
-        
-        
-        if (!info) {
-            document.getElementById("results").innerText = "Unable to load fingerprint data.";
+    chrome.tabs.sendMessage(tabs[0].id, { command: "getFingerprint" }, (info) => {
+        if (chrome.runtime.lastError) {
+            document.getElementById("results").innerText = "Content script not available on this page.";
+            document.getElementById("score").innerText = "N/A";
             return;
         }
 
-        // Show results in the popup
-        renderFingerprint(info);
+        if (!info) {
+            document.getElementById("results").innerText = "Unable to load fingerprint data.";
+            document.getElementById("score").innerText = "N/A";
+            return;
+        }
 
-        // Calculate and show score
-        const score = calcTrackability(info);
-        document.getElementById("score").innerText = score;
+        renderFingerprint(info);
+        document.getElementById("score").innerText = calcTrackability(info);
     });
+});
 
 
 function calcTrackability(info) {
