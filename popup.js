@@ -11,6 +11,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => { //current t
             document.getElementById("results").innerText = "Content script not available on this page.";
             document.getElementById("score").innerText = "No information";
             return;
+
         }
 
         if (!info) { // Handle case where no data is returned
@@ -65,7 +66,7 @@ function calcTrackability(info) {
 function renderFingerprint(info) {
     const container = document.getElementById("details");
 
-    // Loop through keys → obvious requirement for assignment
+    // Loop through keys in info
     for (let key in info) {
         const div = document.createElement("div");
         div.className = "detail-item";
