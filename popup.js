@@ -6,8 +6,8 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => { //current t
         return;
     }
     // Send message to content script
-    chrome.tabs.sendMessage(tabs[0].id, { command: "getFingerprint" }, (info) => {
-        if (chrome.runtime.lastError) { // Handle case where content script is not injected
+    chrome.tabs.sendMessage(tabs[0].id, { command: "getFingerprint" }, (info) => { //info is the response from content script
+        if (chrome.runtime.lastError) { // Handle case where content script is not injected(some pages dont work)
             document.getElementById("results").innerText = "Content script not available on this page.";
             document.getElementById("score").innerText = "No information";
             return;
@@ -20,7 +20,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => { //current t
         }
 
         renderFingerprint(info);
-        document.getElementById("score").innerText = calcTrackability(info);
+        document.getElementById("score").innerText = calcTrackability(info); 
     });
 });
 
