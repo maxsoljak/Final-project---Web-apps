@@ -70,7 +70,7 @@ function renderFingerprint(info) {
     for (let key in info) {
         const div = document.createElement("div");
         div.className = "detail-item";
-        div.innerHTML = `<strong>${key}:</strong> ${JSON.stringify(info[key])}`;
+        div.innerHTML = `<strong>${key}:</strong> ${JSON.stringify(info[key])}`; //for plugins like adblock because array
         container.appendChild(div);
     }
 }
