@@ -1,5 +1,5 @@
 // Ask content script for fingerprint data
-chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => { //current tab user is looking at
     if (!tabs || tabs.length === 0) {
         document.getElementById("results").innerText = "No active tab found.";
         document.getElementById("score").innerText = "N/A";
